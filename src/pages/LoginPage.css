@@ -1,0 +1,560 @@
+.login-page {
+  min-height: 100vh;
+  width: 100%;
+  background: radial-gradient(1200px 600px at 20% 10%, rgba(30, 58, 95, 0.10) 0%, transparent 60%),
+              radial-gradient(1000px 600px at 90% 90%, rgba(16, 185, 129, 0.08) 0%, transparent 55%),
+              #f8fafc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(1rem, 3vw, 3rem);
+  position: relative;
+  overflow: hidden;
+}
+
+.login-container {
+  width: 100%;
+  max-width: 1100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: white;
+  border-radius: 22px;
+  box-shadow: 0 20px 70px rgba(2, 6, 23, 0.12);
+  overflow: hidden;
+  min-height: min(680px, calc(100vh - 2 * clamp(1rem, 3vw, 3rem)));
+  animation: fadeInScale 0.6s ease-out;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Left Side - Branding */
+.login-branding {
+  background: linear-gradient(135deg, #1e3a5f 0%, #2c3e50 100%);
+  padding: clamp(1.75rem, 3vw, 3rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.login-branding::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23ffffff" fill-opacity="0.05"><circle cx="30" cy="30" r="2"/></g></svg>');
+  opacity: 0.3;
+}
+
+.back-to-home {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+  padding: 0.25rem 0;
+}
+
+.back-to-home:hover {
+  color: white;
+  transform: translateX(-3px);
+}
+
+.back-to-home svg {
+  transition: transform 0.3s ease;
+}
+
+.back-to-home:hover svg {
+  transform: translateX(-3px);
+  }
+
+.branding-content {
+  position: relative;
+  z-index: 1;
+  color: white;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hospital-logo {
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.logo-icon {
+  width: 80px;
+  height: 80px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* HospitalLogo component styling in login page */
+.hospital-logo .hospital-logo-wrapper {
+  width: clamp(120px, 14vw, 180px);
+  height: clamp(120px, 14vw, 180px);
+  padding: clamp(8px, 1vw, 14px);
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(10px);
+  box-shadow: none !important;
+  filter: none !important;
+  text-shadow: none !important;
+}
+
+.hospital-logo .hospital-logo-wrapper img {
+  filter: none !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+.hospital-name {
+  font-size: clamp(1.6rem, 2.2vw, 2.2rem);
+  font-weight: 700;
+  margin: 0 0 0.75rem 0;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+}
+
+.hospital-tagline {
+  font-size: 1.05rem;
+  margin: 0 0 2rem 0;
+  opacity: 0.95;
+  font-weight: 400;
+}
+
+.branding-features {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+.feature-icon {
+  width: 24px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* Right Side - Login Form */
+.login-form-section {
+  padding: clamp(1.75rem, 3vw, 3rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+}
+
+.login-card {
+  width: 100%;
+  max-width: 420px;
+}
+
+.login-header {
+  margin-bottom: 2rem;
+}
+
+.login-header h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 0.5rem 0;
+  letter-spacing: -0.5px;
+}
+
+.login-header p {
+  font-size: 0.95rem;
+  color: #64748b;
+  margin: 0;
+}
+
+.login-error {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 12px;
+  color: #dc2626;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+  animation: shake 0.5s ease-in-out;
+}
+
+.login-error svg {
+  flex-shrink: 0;
+  color: #dc2626;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-10px); }
+  75% { transform: translateX(10px); }
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: 1rem;
+  color: #9ca3af;
+  pointer-events: none;
+  z-index: 1;
+  transition: color 0.3s ease;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.875rem 1rem 0.875rem 3rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  color: #1f2937;
+  background: #ffffff;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #1e3a5f;
+  box-shadow: 0 0 0 4px rgba(30, 58, 95, 0.1);
+}
+
+.form-group:focus-within .input-icon {
+  color: #1e3a5f;
+}
+
+.form-group input:disabled {
+  background: #f9fafb;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.form-group input::placeholder {
+  color: #9ca3af;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: #9ca3af;
+  cursor: pointer;
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s ease;
+  z-index: 1;
+}
+
+.password-toggle:hover {
+  color: #1e3a5f;
+}
+
+.password-toggle:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.875rem;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  color: #6b7280;
+  user-select: none;
+}
+
+.remember-me input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: #1e3a5f;
+  border-radius: 4px;
+}
+
+.remember-me input[type="checkbox"]:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.forgot-password {
+  color: #1e3a5f;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.forgot-password:hover {
+  color: #2c3e50;
+  text-decoration: underline;
+}
+
+.btn-login {
+  width: 100%;
+  padding: 0.875rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, #1e3a5f 0%, #2c3e50 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 12px rgba(30, 58, 95, 0.25);
+  margin-top: 0.5rem;
+}
+
+.btn-login:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(30, 58, 95, 0.35);
+}
+
+.btn-login:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn-login:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-login svg {
+  transition: transform 0.3s ease;
+}
+
+.btn-login:hover:not(:disabled) svg {
+  transform: translateX(3px);
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.login-footer {
+  margin-top: 2rem;
+  text-align: center;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.login-footer p {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin: 0;
+}
+
+.login-footer a {
+  color: #1e3a5f;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.login-footer a:hover {
+  color: #2c3e50;
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 991px) {
+  .login-container {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+  }
+
+  .login-branding {
+    padding: 2rem;
+    min-height: 300px;
+  }
+
+  .hospital-name {
+    font-size: 1.75rem;
+  }
+
+  .hospital-tagline {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .branding-features {
+    gap: 0.75rem;
+  }
+
+  .login-form-section {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .login-page {
+    padding: 1rem;
+  }
+
+  .login-container {
+    border-radius: 16px;
+    min-height: auto;
+  }
+
+  .login-branding {
+    padding: 1.5rem;
+    min-height: 250px;
+  }
+
+  .hospital-name {
+    font-size: 1.5rem;
+  }
+
+  .logo-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 2rem;
+  }
+
+  .login-form-section {
+    padding: 1.5rem;
+  }
+
+  .login-header h2 {
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-page {
+    padding: 0.5rem;
+  }
+
+  .login-container {
+    border-radius: 12px;
+  }
+
+  .login-branding {
+    padding: 1.25rem;
+    min-height: 200px;
+  }
+
+  .hospital-name {
+    font-size: 1.25rem;
+  }
+
+  .hospital-tagline {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .branding-features {
+    gap: 0.5rem;
+  }
+
+  .feature-item {
+    font-size: 0.85rem;
+  }
+
+  .login-form-section {
+    padding: 1.25rem;
+  }
+
+  .login-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .form-options {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .back-to-home {
+    font-size: 0.85rem;
+  }
+}

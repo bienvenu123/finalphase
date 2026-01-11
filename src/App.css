@@ -1,0 +1,40 @@
+.App {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f5f7fa;
+}
+
+.main-content {
+  margin-left: 260px;
+  flex: 1;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+  min-height: 100vh;
+  padding: 0;
+  transition: margin-left 0.3s ease;
+}
+
+.main-content.login-layout {
+  margin-left: 0;
+  padding: 0;
+  background: transparent;
+}
+
+/* Responsive Design */
+@media (max-width: 991px) {
+  .main-content {
+    margin-left: 0;
+    padding-top: 4rem; /* Space for mobile menu button */
+  }
+}
+
+@media (max-width: 767px) {
+  .main-content {
+    padding-top: 3.5rem;
+  }
+}
+
+@media (max-width: 575px) {
+  .main-content {
+    padding-top: 3rem;
+  }
+}

@@ -1,0 +1,86 @@
+.hospital-logo-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  overflow: hidden;
+  background: white;
+  box-shadow: none !important;
+  filter: none !important;
+  text-shadow: none !important;
+  transition: all 0.3s ease;
+}
+
+.hospital-logo-wrapper:hover {
+  transform: scale(1.05);
+  box-shadow: none !important;
+  filter: none !important;
+  text-shadow: none !important;
+}
+
+.hospital-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  filter: none !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+/* Size Variants */
+.logo-small {
+  width: 40px;
+  height: 40px;
+  padding: 4px;
+}
+
+.logo-medium {
+  width: 60px;
+  height: 60px;
+  padding: 6px;
+}
+
+.logo-large {
+  width: 80px;
+  height: 80px;
+  padding: 8px;
+}
+
+.logo-xlarge {
+  width: 120px;
+  height: 120px;
+  padding: 12px;
+}
+
+/* Square variant for non-circular logos */
+.hospital-logo-wrapper.logo-square {
+  border-radius: 12px;
+}
+
+.hospital-logo-wrapper.logo-square.logo-small {
+  border-radius: 8px;
+}
+
+.hospital-logo-wrapper.logo-square.logo-medium {
+  border-radius: 10px;
+}
+
+.hospital-logo-wrapper.logo-square.logo-large {
+  border-radius: 12px;
+}
+
+.hospital-logo-wrapper.logo-square.logo-xlarge {
+  border-radius: 16px;
+}
+
+/* Fallback SVG styling */
+.hospital-logo-fallback {
+  width: 100%;
+  height: 100%;
+  display: block;
+  filter: none !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+

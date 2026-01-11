@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Login Endpoint</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        pre {
+            background: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .success {
+            color: green;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Backend Login Endpoint Tester</h1>
+    
+    <div class="test-section">
+        <h2>1. Test Server Connectivity</h2>
+        <button onclick="testServer()">Test Server</button>
+        <pre id="server-result"></pre>
+    </div>
+
+    <div class="test-section">
+        <h2>2. Test Users Endpoint</h2>
+        <button onclick="testUsers()">Test GET /api/users</button>
+        <pre id="users-result"></pre>
+    </div>
+
+    <div class="test-section">
+        <h2>3. Test Login Endpoint</h2>
+        <label>Email: <input type="email" id="email" value="test@example.com"></label><br><br>
+        <label>Password: <input type="password" id="password" value="test123"></label><br><br>
+        <button onclick="testLogin()">Test POST /api/users/login</button>
+        <pre id="login-result"></pre>
+    </div>
+
+    <div class="test-section">
+        <h2>4. Check All Routes</h2>
+        <button onclick="testAllRoutes()">Test All Routes</button>
+        <pre id="routes-result"></pre>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:5000/api';
+
+        async function testServer() {
+            const resultEl = document.getElementById('server-result');
+            resultEl.textContent = 'Testing...';
+            
+            try {
+                const response = await fetch('http://localhost:5000');
+                resultEl.innerHTML = `<span class="success">✅ Server is reachable</span>\nStatus: ${response.status}\nURL: http://localhost:5000`;
+            } catch (error) {
+                resultEl.innerHTML = `<span class="error">❌ Server is NOT reachable</span>\nError: ${error.message}\n\nMake sure your backend server is running on port 5000.`;
+            }
+        }
+
+        async function testUsers() {
+            const resultEl = document.getElementById('users-result');
+            resultEl.textContent = 'Testing...';
+            
+            try {
+                const response = await fetch(`${API_BASE}/users`);
+                const data = await response.json();
+                resultEl.innerHTML = `<span class="success">✅ Users endpoint works</span>\nStatus: ${response.status}\nResponse: ${JSON.stringify(data, null, 2)}`;
+            } catch (error) {
+                resultEl.innerHTML = `<span class="error">❌ Users endpoint failed</span>\nError: ${error.message}`;
+            }
+        }
+
+        async function testLogin() {
+            const resultEl = document.getElementById('login-result');
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            resultEl.textContent = 'Testing...';
+            
+            try {
+                const response = await fetch(`${API_BASE}/users/login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const contentType = response.headers.get('content-type');
+                let data;
+                
+                if (contentType && contentType.includes('application/json')) {
+                    data = await response.json();
+                } else {
+                    const text = await response.text();
+                    data = { rawResponse: text.substring(0, 500) };
+                }
+
+                if (response.status === 404) {
+                    resultEl.innerHTML = `<span class="error">❌ 404 Not Found</span>\n\nStatus: ${response.status}\nURL: ${API_BASE}/users/login\n\nResponse: ${JSON.stringify(data, null, 2)}\n\n💡 The login route is not found. Check:\n1. Route is defined in userRoutes.js\n2. Route order: /login before /:id\n3. Server restarted after changes\n4. Routes mounted at /api/users`;
+                } else if (response.ok) {
+                    resultEl.innerHTML = `<span class="success">✅ Login endpoint works!</span>\nStatus: ${response.status}\nResponse: ${JSON.stringify(data, null, 2)}`;
+                } else {
+                    resultEl.innerHTML = `<span class="error">⚠️ Login endpoint exists but returned error</span>\nStatus: ${response.status}\nResponse: ${JSON.stringify(data, null, 2)}`;
+                }
+            } catch (error) {
+                resultEl.innerHTML = `<span class="error">❌ Request failed</span>\nError: ${error.message}\n\nCheck:\n1. Backend server is running\n2. CORS is enabled\n3. Network connectivity`;
+            }
+        }
+
+        async function testAllRoutes() {
+            const resultEl = document.getElementById('routes-result');
+            resultEl.textContent = 'Testing all routes...';
+            
+            const routes = [
+                { name: 'GET /api/users', method: 'GET', url: `${API_BASE}/users` },
+                { name: 'POST /api/users/login', method: 'POST', url: `${API_BASE}/users/login`, body: { email: 'test@example.com', password: 'test' } },
+                { name: 'GET /api/users/role/doctor', method: 'GET', url: `${API_BASE}/users/role/doctor` },
+            ];
+
+            let results = [];
+            
+            for (const route of routes) {
+                try {
+                    const options = {
+                        method: route.method,
+                        headers: { 'Content-Type': 'application/json' }
+                    };
+                    
+                    if (route.body) {
+                        options.body = JSON.stringify(route.body);
+                    }
+                    
+                    const response = await fetch(route.url, options);
+                    const contentType = response.headers.get('content-type');
+                    let data;
+                    
+                    if (contentType && contentType.includes('application/json')) {
+                        try {
+                            data = await response.json();
+                        } catch (e) {
+                            data = { error: 'Invalid JSON' };
+                        }
+                    } else {
+                        const text = await response.text();
+                        data = { rawResponse: text.substring(0, 100) };
+                    }
+                    
+                    const status = response.status === 404 ? '❌ 404' : response.ok ? '✅ OK' : '⚠️ ' + response.status;
+                    results.push(`${status} ${route.name} - Status: ${response.status}`);
+                } catch (error) {
+                    results.push(`❌ ${route.name} - Error: ${error.message}`);
+                }
+            }
+            
+            resultEl.textContent = results.join('\n');
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
