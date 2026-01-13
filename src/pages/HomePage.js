@@ -146,12 +146,10 @@ const HomePage = () => {
             Welcome to Kigali Specialized Orthopaedic Hospital
           </h1>
           <p className={`hero-subtitle ${visibleSections.has('hero') ? 'animate-fade-in-up delay-2' : ''}`}>
-            Excellence in Orthopaedic Care for Rwanda and Beyond
+          Meet your Orthopaedic Heroes dedicated to your comfort
           </p>
           <p className={`hero-description ${visibleSections.has('hero') ? 'animate-fade-in-up delay-3' : ''}`}>
-            We are dedicated to providing world-class orthopaedic treatment, 
-            combining advanced medical technology with compassionate care to help 
-            our patients regain mobility and improve their quality of life.
+          
           </p>
           <div className={`hero-actions ${visibleSections.has('hero') ? 'animate-fade-in-up delay-4' : ''}`}>
             {authenticated ? (
@@ -184,10 +182,10 @@ const HomePage = () => {
                   <span>Contact Us</span>
                   <span className="btn-arrow">→</span>
                 </Link>
-                <Link to="/doctors-chat" className="btn btn-secondary btn-hero">
+                {/* <Link to="/doctors-chat" className="btn btn-secondary btn-hero">
                   <span>Doctors Chat</span>
                   <span className="btn-arrow">→</span>
-                </Link>
+                </Link> */}
               </>
             )}
           </div>
@@ -203,8 +201,9 @@ const HomePage = () => {
           <div className={`section-header ${visibleSections.has('about') ? 'animate-fade-in-up' : ''}`}>
             <h2 className="section-title">About Our Hospital</h2>
             <p className="section-description">
-              Kigali Specialized Orthopaedic Hospital is a leading healthcare facility 
-              dedicated to providing comprehensive orthopaedic care to patients across Rwanda.
+            We are dedicated to providing world-class orthopaedic treatment, 
+            combining advanced medical technology with compassionate care to help 
+            our patients regain mobility and improve their quality of life.
             </p>
           </div>
           <div className="about-grid">
@@ -340,7 +339,7 @@ const HomePage = () => {
             <p className="cta-description">
               Book your consultation with our expert orthopaedic specialists today.
             </p>
-            {authenticated ? (
+            {/* {authenticated ? (
               <Link to="/appointments" className="btn btn-primary btn-large">
                 <span>Book Appointment</span>
                 <span className="btn-arrow">→</span>
@@ -350,7 +349,7 @@ const HomePage = () => {
                 <span>Login to Book Appointment</span>
                 <span className="btn-arrow">→</span>
               </Link>
-            )}
+            )} */}
           </div>
         </div>
       </section>

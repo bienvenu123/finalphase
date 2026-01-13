@@ -321,10 +321,6 @@ const PatientsPage = () => {
         setError('Last name is required');
         return;
       }
-      if (!formData.email || !formData.email.trim()) {
-        setError('Email is required');
-        return;
-      }
       if (!formData.phone || !formData.phone.trim()) {
         setError('Phone number is required');
         return;
@@ -348,13 +344,16 @@ const PatientsPage = () => {
         gender: formData.gender,
         date_of_birth: formData.date_of_birth,
         phone: formData.phone.trim(),
-        email: formData.email.trim().toLowerCase(),
         address: {
           district: formData.address.district.trim(),
           sector: formData.address.sector.trim()
         },
         origin: formData.origin || 'Rwandan'
       };
+      // Only include email if provided
+      if (formData.email && formData.email.trim()) {
+        submitData.email = formData.email.trim().toLowerCase();
+      }
       
       // Only include insurance if provided and not empty
       if (formData.insurance && formData.insurance.trim() !== '') {
@@ -672,15 +671,14 @@ const PatientsPage = () => {
               </div>
 
               <div className="form-group">
-                <label htmlFor="email">Email *</label>
+                <label htmlFor="email">Email</label>
                 <input
                   type="email"
                   id="email"
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
-                  required
-                  placeholder="patient@example.com"
+                  placeholder="patient@example.com (optional)"
                 />
               </div>
 

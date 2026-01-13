@@ -84,7 +84,7 @@
 }
 
 .user-name {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 600;
   color: white;
   overflow: hidden;
@@ -116,7 +116,7 @@
 .nav-link {
   display: flex;
   align-items: center;
-  padding: 0.875rem 1.5rem;
+  padding: 0.7rem 1.25rem;
   color: rgba(255, 255, 255, 0.85);
   text-decoration: none;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -160,9 +160,9 @@
 }
 
 .nav-icon {
-  font-size: 1.25rem;
-  margin-right: 0.875rem;
-  width: 24px;
+  font-size: 1.05rem;
+  margin-right: 0.75rem;
+  width: 20px;
   text-align: center;
   display: flex;
   align-items: center;
@@ -171,7 +171,7 @@
 }
 
 .nav-label {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   letter-spacing: 0.3px;
 }
 
@@ -188,7 +188,7 @@
   display: flex;
   align-items: center;
   width: 100%;
-  padding: 0.875rem 1.5rem;
+  padding: 0.7rem 1.25rem;
   background: none;
   border: none;
   color: rgba(255, 255, 255, 0.85);
@@ -198,7 +198,7 @@
   position: relative;
   font-weight: 500;
   cursor: pointer;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   letter-spacing: 0.3px;
   text-align: left;
 }

@@ -1,5 +1,5 @@
 // API Base URL - Update this to match your backend API URL
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://finalhospital-three.vercel.app/api';
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://finalhospital-three.vercel.app/api';
 
 /**
  * Doctor Service

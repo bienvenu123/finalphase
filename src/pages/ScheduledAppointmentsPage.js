@@ -695,17 +695,10 @@ const ScheduledAppointmentsPage = () => {
           return;
         }
         
-        // Validate email (now required)
-        if (!newPatientData.email) {
-          setError('Email is required');
-          return;
-        }
-        
         // Prepare patient data with nested address structure
         const patientSubmitData = {
           first_name: newPatientData.first_name,
           last_name: newPatientData.last_name,
-          email: newPatientData.email,
           phone: newPatientData.phone,
           date_of_birth: newPatientData.date_of_birth,
           gender: newPatientData.gender,
@@ -715,6 +708,10 @@ const ScheduledAppointmentsPage = () => {
           },
           origin: newPatientData.origin || 'Rwandan'
         };
+        // Only include email if provided
+        if (newPatientData.email && newPatientData.email.trim()) {
+          patientSubmitData.email = newPatientData.email.trim().toLowerCase();
+        }
         
         try {
           const patientResponse = await createPatient(patientSubmitData);
@@ -1203,7 +1200,7 @@ const ScheduledAppointmentsPage = () => {
               <div className="form-group">
                 <label>Patient Type *</label>
                 <div className="radio-group">
-                  <label className="radio-label">
+                  <label className={`radio-label ${patientType === 'existing' ? 'active' : ''}`}>
                     <input
                       type="radio"
                       name="patientType"
@@ -1211,9 +1208,14 @@ const ScheduledAppointmentsPage = () => {
                       checked={patientType === 'existing'}
                       onChange={(e) => setPatientType(e.target.value)}
                     />
-                    <span>Existing Patient</span>
+                    <div className="radio-content">
+                      <svg className="radio-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 12c2.761 0 5-2.239 5-5S14.761 2 12 2 7 4.239 7 7s2.239 5 5 5Zm0 2c-4.418 0-8 2.239-8 5v1h16v-1c0-2.761-3.582-5-8-5Z" fill="currentColor"/>
+                      </svg>
+                      <span>Existing Patient</span>
+                    </div>
                   </label>
-                  <label className="radio-label">
+                  <label className={`radio-label ${patientType === 'new' ? 'active' : ''}`}>
                     <input
                       type="radio"
                       name="patientType"
@@ -1221,7 +1223,12 @@ const ScheduledAppointmentsPage = () => {
                       checked={patientType === 'new'}
                       onChange={(e) => setPatientType(e.target.value)}
                     />
-                    <span>New Patient</span>
+                    <div className="radio-content">
+                      <svg className="radio-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15 12c2.209 0 4-1.791 4-4S17.209 4 15 4s-4 1.791-4 4 1.791 4 4 4Zm-9 1c1.657 0 3-1.343 3-3S7.657 7 6 7 3 8.343 3 10s1.343 3 3 3Zm0 2c-2.761 0-5 1.343-5 3v2h10v-2c0-1.657-2.239-3-5-3Zm9 0c-.346 0-.682.02-1.006.058 1.231.758 2.006 1.847 2.006 2.942v2h7v-2c0-1.657-2.239-3-5-3Zm-1-6v2h-2v2h2v2h2v-2h2v-2h-2V9h-2Z" fill="currentColor"/>
+                      </svg>
+                      <span>New Patient</span>
+                    </div>
                   </label>
                 </div>
               </div>
@@ -1356,15 +1363,14 @@ const ScheduledAppointmentsPage = () => {
                   
                   <div className="form-row">
                     <div className="form-group">
-                      <label htmlFor="email">Email *</label>
+                      <label htmlFor="email">Email</label>
                       <input
                         type="email"
                         id="email"
                         name="email"
                         value={newPatientData.email}
                         onChange={handleNewPatientChange}
-                        required
-                        placeholder="patient@example.com"
+                        placeholder="patient@example.com (optional)"
                       />
                     </div>
                     <div className="form-group">
