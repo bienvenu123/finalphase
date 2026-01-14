@@ -413,10 +413,18 @@
 }
 
 .about-icon {
-  font-size: 2.5rem;
   position: relative;
   z-index: 2;
   transition: transform 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #1e3a5f;
+}
+
+.about-icon svg {
+  width: 28px;
+  height: 28px;
 }
 
 .about-card:hover .about-icon {
@@ -507,11 +515,18 @@
 }
 
 .service-icon {
-  font-size: 2.25rem;
   position: relative;
   z-index: 2;
   transition: transform 0.4s ease;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #1e3a5f;
+}
+
+.service-icon svg {
+  width: 26px;
+  height: 26px;
 }
 
 .service-card:hover .service-icon {
@@ -610,10 +625,18 @@
 }
 
 .contact-info-icon {
-  font-size: 3rem;
   position: relative;
   z-index: 2;
   transition: transform 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #1e3a5f;
+}
+
+.contact-info-icon svg {
+  width: 28px;
+  height: 28px;
 }
 
 .contact-info-card:hover .contact-info-icon {

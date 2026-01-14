@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { isAuthenticated, getCurrentUser } from '../services/authService';
 import HospitalLogo from '../components/HospitalLogo';
+import SvgIcon from '../components/SvgIcon';
 import './HomePage.css';
 
 const HomePage = () => {
@@ -91,32 +92,32 @@ const HomePage = () => {
 
   const services = [
     {
-      icon: '🦴',
+      icon: 'bone',
       title: 'Trauma Orthopaedics',
       description: 'Expert care for fractures, dislocations, and traumatic injuries'
     },
     {
-      icon: '🏃',
+      icon: 'activity',
       title: 'Sports Orthopaedics',
       description: 'Specialized treatment for sports-related injuries and rehabilitation'
     },
     {
-      icon: '🦽',
+      icon: 'wheelchair',
       title: 'Arthroplasty',
       description: 'Joint replacement surgery including hip, knee, and shoulder'
     },
     {
-      icon: '👶',
+      icon: 'baby',
       title: 'Pediatric Orthopaedics',
       description: 'Comprehensive orthopaedic care for children and adolescents'
     },
     {
-      icon: '🦶',
+      icon: 'foot',
       title: 'Foot and Ankle',
       description: 'Specialized care for foot and ankle conditions and injuries'
     },
     {
-      icon: '🔬',
+      icon: 'microscope',
       title: 'Tumor and Sepsis',
       description: 'Advanced treatment for bone tumors and orthopaedic infections'
     }
@@ -209,7 +210,7 @@ const HomePage = () => {
           <div className="about-grid">
             <div className={`about-card ${visibleSections.has('about') ? 'animate-slide-up delay-1' : ''}`}>
               <div className="about-icon-wrapper">
-                <div className="about-icon">🏥</div>
+                <div className="about-icon"><SvgIcon name="hospital" size={28} /></div>
                 <div className="icon-ripple"></div>
               </div>
               <h3 className="about-card-title">State-of-the-Art Facilities</h3>
@@ -220,7 +221,7 @@ const HomePage = () => {
             </div>
             <div className={`about-card ${visibleSections.has('about') ? 'animate-slide-up delay-2' : ''}`}>
               <div className="about-icon-wrapper">
-                <div className="about-icon">👨‍⚕️</div>
+                <div className="about-icon"><SvgIcon name="doctor" size={28} /></div>
                 <div className="icon-ripple"></div>
               </div>
               <h3 className="about-card-title">Expert Medical Team</h3>
@@ -231,7 +232,7 @@ const HomePage = () => {
             </div>
             <div className={`about-card ${visibleSections.has('about') ? 'animate-slide-up delay-3' : ''}`}>
               <div className="about-icon-wrapper">
-                <div className="about-icon">💚</div>
+                <div className="about-icon"><SvgIcon name="heart" size={28} /></div>
                 <div className="icon-ripple"></div>
               </div>
               <h3 className="about-card-title">Patient-Centered Care</h3>
@@ -265,7 +266,7 @@ const HomePage = () => {
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="service-icon-wrapper">
-                  <div className="service-icon">{service.icon}</div>
+                  <div className="service-icon"><SvgIcon name={service.icon} size={26} /></div>
                   <div className="service-icon-bg"></div>
                 </div>
                 <h3 className="service-title">{service.title}</h3>
@@ -292,7 +293,7 @@ const HomePage = () => {
           <div className="contact-info-grid">
             <div className={`contact-info-card ${visibleSections.has('contact') ? 'animate-slide-up delay-1' : ''}`}>
               <div className="contact-info-icon-wrapper">
-                <div className="contact-info-icon">📞</div>
+                <div className="contact-info-icon"><SvgIcon name="phone" size={28} /></div>
                 <div className="icon-pulse"></div>
               </div>
               <h3 className="contact-info-title">Phone</h3>
@@ -301,7 +302,7 @@ const HomePage = () => {
             </div>
             <div className={`contact-info-card ${visibleSections.has('contact') ? 'animate-slide-up delay-2' : ''}`}>
               <div className="contact-info-icon-wrapper">
-                <div className="contact-info-icon">✉️</div>
+                <div className="contact-info-icon"><SvgIcon name="mail" size={28} /></div>
                 <div className="icon-pulse"></div>
               </div>
               <h3 className="contact-info-title">Email</h3>
@@ -310,7 +311,7 @@ const HomePage = () => {
             </div>
             <div className={`contact-info-card ${visibleSections.has('contact') ? 'animate-slide-up delay-3' : ''}`}>
               <div className="contact-info-icon-wrapper">
-                <div className="contact-info-icon">📍</div>
+                <div className="contact-info-icon"><SvgIcon name="location" size={28} /></div>
                 <div className="icon-pulse"></div>
               </div>
               <h3 className="contact-info-title">Location</h3>
