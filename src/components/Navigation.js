@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { logout, getCurrentUser } from '../services/authService';
 import HospitalLogo from './HospitalLogo';
+import SvgIcon from './SvgIcon';
 import './Navigation.css';
 
 const Navigation = () => {
@@ -12,29 +13,29 @@ const Navigation = () => {
 
   // Define all navigation items with access control
   const allNavItems = [
-    { path: '/dashboard', label: 'Dashboard', icon: '📊', roles: ['Admin', 'admin'] },
-    { path: '/doctor-dashboard', label: 'Doctor Dashboard', icon: '👨‍⚕️', roles: ['doctor', 'Doctor'] },
-    { path: '/pr-dashboard', label: 'PR Dashboard', icon: '📢', roles: ['PR', 'pr'] },
-    { path: '/user-dashboard', label: 'My Dashboard', icon: '👤', roles: ['User', 'user', 'patient', 'Patient'] },
-    { path: '/users', label: 'Users', icon: '👥', roles: ['Admin', 'admin'] },
-    { path: '/roles', label: 'Roles', icon: '🔐', roles: ['Admin', 'admin'] },
-    { path: '/patients', label: 'Patients', icon: '🏥', roles: ['Admin', 'admin', 'doctor', 'Doctor', 'PR', 'pr', 'receptionist', 'Receptionist'] },
-    { path: '/doctors', label: 'Doctors', icon: '👨‍⚕️', roles: ['Admin', 'admin'] },
-    { path: '/departments', label: 'Departments', icon: '🏢', roles: ['Admin', 'admin'] },
-    { path: '/insurances', label: 'Insurances', icon: '🛡️', roles: ['Admin', 'admin'] },
-    { path: '/doctor-schedules', label: 'Doctor Schedules', icon: '📅', roles: ['Admin', 'admin', 'doctor', 'Doctor', 'PR', 'pr'] },
-    { path: '/appointments', label: 'Appointments', icon: '📋', roles: ['Admin', 'admin', 'doctor', 'Doctor', 'PR', 'pr', 'receptionist', 'Receptionist'] },
-    { path: '/appointment-status-history', label: 'Status History', icon: '📊', roles: ['Admin', 'admin'] },
-    { path: '/appointment-changes', label: 'Appointment Changes', icon: '🔄', roles: ['Admin', 'admin'] },
-    { path: '/medical-records', label: 'Medical Records', icon: '📝', roles: ['Admin', 'admin', 'doctor', 'Doctor'] },
-    { path: '/notifications', label: 'Notifications', icon: '🔔', roles: ['Admin', 'admin', 'doctor', 'Doctor', 'PR', 'pr', 'User', 'user', 'patient', 'Patient'] },
-    { path: '/reports', label: 'Reports', icon: '📊', roles: ['Admin', 'admin', 'doctor', 'Doctor'] },
-    { path: '/contact-doctor', label: 'Contact', icon: '📧', roles: ['doctor', 'Doctor'], contactType: 'doctor' },
-    { path: '/contact-admin', label: 'Contact', icon: '📧', roles: ['Admin', 'admin'], contactType: 'admin' },
-    { path: '/contact-patient', label: 'Contact', icon: '📧', roles: ['patient', 'Patient', 'User', 'user'], contactType: 'patient' },
-    { path: '/contacts', label: 'Contact Messages', icon: '💬', roles: ['Admin', 'admin', 'PR', 'pr'] },
-    { path: '/doctors-chat', label: 'Doctors Chat', icon: '💬', roles: ['doctor', 'Doctor'] },
-    { path: '/audit-logs', label: 'Audit Logs', icon: '📜', roles: ['Admin', 'admin'] }
+    { path: '/dashboard', label: 'Dashboard', icon: 'dashboard', roles: ['Admin', 'admin'] },
+    { path: '/doctor-dashboard', label: 'Doctor Dashboard', icon: 'doctor', roles: ['doctor', 'Doctor'] },
+    { path: '/pr-dashboard', label: 'PR Dashboard', icon: 'chat', roles: ['PR', 'pr'] },
+    { path: '/user-dashboard', label: 'My Dashboard', icon: 'user', roles: ['User', 'user', 'patient', 'Patient'] },
+    { path: '/users', label: 'Users', icon: 'users', roles: ['Admin', 'admin'] },
+    { path: '/roles', label: 'Roles', icon: 'lock', roles: ['Admin', 'admin'] },
+    { path: '/patients', label: 'Patients', icon: 'hospital', roles: ['Admin', 'admin', 'doctor', 'Doctor', 'PR', 'pr', 'receptionist', 'Receptionist'] },
+    { path: '/doctors', label: 'Doctors', icon: 'doctor', roles: ['Admin', 'admin'] },
+    { path: '/departments', label: 'Departments', icon: 'building', roles: ['Admin', 'admin'] },
+    { path: '/insurances', label: 'Insurances', icon: 'shield', roles: ['Admin', 'admin'] },
+    { path: '/doctor-schedules', label: 'Doctor Schedules', icon: 'calendar', roles: ['Admin', 'admin', 'doctor', 'Doctor', 'PR', 'pr'] },
+    { path: '/appointments', label: 'Appointments', icon: 'clipboard', roles: ['Admin', 'admin', 'doctor', 'Doctor', 'PR', 'pr', 'receptionist', 'Receptionist'] },
+    { path: '/appointment-status-history', label: 'Status History', icon: 'chart', roles: ['Admin', 'admin'] },
+    { path: '/appointment-changes', label: 'Appointment Changes', icon: 'refresh', roles: ['Admin', 'admin'] },
+    { path: '/medical-records', label: 'Medical Records', icon: 'file', roles: ['Admin', 'admin', 'doctor', 'Doctor'] },
+    { path: '/notifications', label: 'Notifications', icon: 'bell', roles: ['Admin', 'admin', 'doctor', 'Doctor', 'PR', 'pr', 'User', 'user', 'patient', 'Patient'] },
+    { path: '/reports', label: 'Reports', icon: 'chart', roles: ['Admin', 'admin', 'doctor', 'Doctor'] },
+    { path: '/contact-doctor', label: 'Contact', icon: 'mail', roles: ['doctor', 'Doctor'], contactType: 'doctor' },
+    { path: '/contact-admin', label: 'Contact', icon: 'mail', roles: ['Admin', 'admin'], contactType: 'admin' },
+    { path: '/contact-patient', label: 'Contact', icon: 'mail', roles: ['patient', 'Patient', 'User', 'user'], contactType: 'patient' },
+    { path: '/contacts', label: 'Contact Messages', icon: 'chat', roles: ['Admin', 'admin', 'PR', 'pr'] },
+    { path: '/doctors-chat', label: 'Doctors Chat', icon: 'chat', roles: ['doctor', 'Doctor'] },
+    { path: '/audit-logs', label: 'Audit Logs', icon: 'file', roles: ['Admin', 'admin'] }
   ];
 
   // Filter navigation items based on user role
@@ -145,7 +146,7 @@ const Navigation = () => {
                   className={`nav-link ${isActive ? 'active' : ''}`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <span className="nav-icon">{item.icon}</span>
+                  <span className="nav-icon"><SvgIcon name={item.icon} /></span>
                   <span className="nav-label">{item.label}</span>
                 </Link>
               </li>
@@ -154,7 +155,7 @@ const Navigation = () => {
         </ul>
         <div className="nav-footer">
           <button className="nav-logout" onClick={handleLogout}>
-            <span className="nav-icon">🚪</span>
+            <span className="nav-icon"><SvgIcon name="logout" /></span>
             <span className="nav-label">Logout</span>
           </button>
         </div>

@@ -5,8 +5,8 @@
 }
 
 html {
-  /* Global readability: scale up the entire UI (rem-based sizing) */
-  font-size: 20px;
+  /* Global sizing baseline (rem-based). Keep it professional/compact. */
+  font-size: 16px;
 }
 
 body {
@@ -30,7 +30,7 @@ code {
 /* Keep small screens comfortable */
 @media (max-width: 575px) {
   html {
-    font-size: 18px;
+    font-size: 15px;
   }
 }
 

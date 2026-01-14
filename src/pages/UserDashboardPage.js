@@ -5,6 +5,7 @@ import { getAppointments } from '../services/appointmentService';
 import { getNotificationsByUser } from '../services/notificationService';
 import HospitalLogo from '../components/HospitalLogo';
 import ErrorDisplay from '../components/ErrorDisplay';
+import SvgIcon from '../components/SvgIcon';
 import './UserDashboardPage.css';
 
 const UserDashboardPage = () => {
@@ -128,28 +129,28 @@ const UserDashboardPage = () => {
     {
       title: 'My Appointments',
       value: stats.myAppointments,
-      icon: '📋',
+      icon: 'clipboard',
       color: 'blue',
       link: '/scheduled-appointments'
     },
     {
       title: 'Upcoming',
       value: stats.upcomingAppointments,
-      icon: '📅',
+      icon: 'calendar',
       color: 'green',
       link: '/scheduled-appointments'
     },
     {
       title: 'Completed',
       value: stats.completedAppointments,
-      icon: '✅',
+      icon: 'chart',
       color: 'purple',
       link: '/scheduled-appointments'
     },
     {
       title: 'Notifications',
       value: stats.notifications,
-      icon: '🔔',
+      icon: 'bell',
       color: 'red',
       link: '/notifications'
     }
@@ -194,7 +195,7 @@ const UserDashboardPage = () => {
       <div className="stats-grid">
         {statCards.map((card, index) => (
           <Link key={index} to={card.link} className={`stat-card stat-card-${card.color}`}>
-            <div className="stat-icon">{card.icon}</div>
+            <div className="stat-icon"><SvgIcon name={card.icon} /></div>
             <div className="stat-content">
               <div className="stat-value">{card.value}</div>
               <div className="stat-title">{card.title}</div>
@@ -334,19 +335,19 @@ const UserDashboardPage = () => {
         </div>
         <div className="quick-actions">
           <Link to="/scheduled-appointments" className="quick-action-card">
-            <div className="quick-action-icon">📅</div>
+            <div className="quick-action-icon"><SvgIcon name="calendar" size={20} /></div>
             <div className="quick-action-text">Book Appointment</div>
           </Link>
           <Link to="/scheduled-appointments" className="quick-action-card">
-            <div className="quick-action-icon">📋</div>
+            <div className="quick-action-icon"><SvgIcon name="clipboard" size={20} /></div>
             <div className="quick-action-text">My Appointments</div>
           </Link>
           <Link to="/notifications" className="quick-action-card">
-            <div className="quick-action-icon">🔔</div>
+            <div className="quick-action-icon"><SvgIcon name="bell" size={20} /></div>
             <div className="quick-action-text">Notifications</div>
           </Link>
           <Link to="/contact-patient" className="quick-action-card">
-            <div className="quick-action-icon">💬</div>
+            <div className="quick-action-icon"><SvgIcon name="chat" size={20} /></div>
             <div className="quick-action-text">Contact Us</div>
           </Link>
         </div>

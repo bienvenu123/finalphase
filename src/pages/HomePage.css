@@ -163,7 +163,7 @@
 }
 
 .hero-title {
-  font-size: 4rem;
+  font-size: clamp(2.2rem, 4.2vw, 3.1rem);
   font-weight: 700;
   margin: 0 0 1rem 0;
   line-height: 1.2;
@@ -172,14 +172,14 @@
 }
 
 .hero-subtitle {
-  font-size: 1.75rem;
+  font-size: clamp(1.1rem, 2.2vw, 1.4rem);
   font-weight: 500;
   margin: 0 0 1.5rem 0;
   opacity: 0.95;
 }
 
 .hero-description {
-  font-size: 1.35rem;
+  font-size: 1.05rem;
   line-height: 1.8;
   margin: 0 0 2.5rem 0;
   opacity: 0.9;
@@ -200,8 +200,8 @@
 }
 
 .btn-hero {
-  padding: 1rem 2.5rem;
-  font-size: 1.25rem;
+  padding: 0.8rem 1.6rem;
+  font-size: 1rem;
   font-weight: 600;
   border-radius: 8px;
   text-decoration: none;
@@ -350,7 +350,7 @@
 }
 
 .section-title {
-  font-size: 3rem;
+  font-size: clamp(1.7rem, 3.2vw, 2.3rem);
   font-weight: 700;
   color: #1e3a5f;
   margin: 0 0 1rem 0;
@@ -359,7 +359,7 @@
 }
 
 .section-description {
-  font-size: 1.35rem;
+  font-size: 1.05rem;
   color: #6b7280;
   line-height: 1.7;
   max-width: 700px;
@@ -377,7 +377,7 @@
 
 .about-card {
   background: white;
-  padding: 3rem;
+  padding: 2rem;
   border-radius: 12px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   text-align: center;
@@ -402,7 +402,7 @@
 }
 
 .about-card:hover {
-  transform: translateY(-10px) scale(1.02);
+  transform: translateY(-6px) scale(1.01);
   box-shadow: 0 12px 32px rgba(102, 126, 234, 0.2);
 }
 
@@ -413,7 +413,7 @@
 }
 
 .about-icon {
-  font-size: 3.5rem;
+  font-size: 2.5rem;
   position: relative;
   z-index: 2;
   transition: transform 0.3s ease;
@@ -441,14 +441,14 @@
 }
 
 .about-card-title {
-  font-size: 1.85rem;
+  font-size: 1.35rem;
   font-weight: 700;
   color: #1e3a5f;
   margin: 0 0 1rem 0;
 }
 
 .about-card-text {
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: #6b7280;
   line-height: 1.7;
   margin: 0;
@@ -468,7 +468,7 @@
 
 .service-card {
   background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-  padding: 2.5rem;
+  padding: 1.75rem;
   border-radius: 12px;
   border: 2px solid #e9ecef;
   text-align: center;
@@ -496,7 +496,7 @@
 
 .service-card:hover {
   border-color: #1e3a5f;
-  transform: translateY(-10px) scale(1.03);
+  transform: translateY(-6px) scale(1.01);
   box-shadow: 0 12px 32px rgba(30, 58, 95, 0.25);
 }
 
@@ -507,7 +507,7 @@
 }
 
 .service-icon {
-  font-size: 3rem;
+  font-size: 2.25rem;
   position: relative;
   z-index: 2;
   transition: transform 0.4s ease;
@@ -522,8 +522,8 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 80px;
-  height: 80px;
+  width: 64px;
+  height: 64px;
   background: linear-gradient(135deg, rgba(30, 58, 95, 0.1) 0%, rgba(44, 62, 80, 0.1) 100%);
   border-radius: 50%;
   transform: translate(-50%, -50%) scale(0);

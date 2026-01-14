@@ -9,6 +9,7 @@ import { getMedicalRecords } from '../services/medicalRecordService';
 import { getNotifications } from '../services/notificationService';
 import HospitalLogo from '../components/HospitalLogo';
 import ErrorDisplay from '../components/ErrorDisplay';
+import SvgIcon from '../components/SvgIcon';
 import './DashboardPage.css';
 
 const DashboardPage = () => {
@@ -120,49 +121,49 @@ const DashboardPage = () => {
     {
       title: 'Total Patients',
       value: stats.patients,
-      icon: '🏥',
+      icon: 'hospital',
       color: 'blue',
       link: '/patients'
     },
     {
       title: 'Doctors',
       value: stats.doctors,
-      icon: '👨‍⚕️',
+      icon: 'doctor',
       color: 'green',
       link: '/doctors'
     },
     {
       title: 'Appointments',
       value: stats.appointments,
-      icon: '📋',
+      icon: 'clipboard',
       color: 'purple',
       link: '/appointments'
     },
     {
       title: 'Departments',
       value: stats.departments,
-      icon: '🏢',
+      icon: 'building',
       color: 'orange',
       link: '/departments'
     },
     {
       title: 'Medical Records',
       value: stats.medicalRecords,
-      icon: '📝',
+      icon: 'file',
       color: 'teal',
       link: '/medical-records'
     },
     {
       title: 'Users',
       value: stats.users,
-      icon: '👥',
+      icon: 'users',
       color: 'indigo',
       link: '/users'
     },
     {
       title: 'Notifications',
       value: stats.notifications,
-      icon: '🔔',
+      icon: 'bell',
       color: 'red',
       link: '/notifications'
     }
@@ -201,7 +202,7 @@ const DashboardPage = () => {
       <div className="stats-grid">
         {statCards.map((card, index) => (
           <Link key={index} to={card.link} className={`stat-card stat-card-${card.color}`}>
-            <div className="stat-icon">{card.icon}</div>
+            <div className="stat-icon"><SvgIcon name={card.icon} /></div>
             <div className="stat-content">
               <div className="stat-value">{card.value}</div>
               <div className="stat-title">{card.title}</div>
@@ -350,19 +351,19 @@ const DashboardPage = () => {
         </div>
         <div className="quick-actions">
           <Link to="/appointments" className="quick-action-card">
-            <div className="quick-action-icon">📅</div>
+            <div className="quick-action-icon"><SvgIcon name="calendar" size={20} /></div>
             <div className="quick-action-text">Create Appointment</div>
           </Link>
           <Link to="/patients" className="quick-action-card">
-            <div className="quick-action-icon">➕</div>
+            <div className="quick-action-icon"><SvgIcon name="user" size={20} /></div>
             <div className="quick-action-text">Add Patient</div>
           </Link>
           <Link to="/doctors" className="quick-action-card">
-            <div className="quick-action-icon">👨‍⚕️</div>
+            <div className="quick-action-icon"><SvgIcon name="doctor" size={20} /></div>
             <div className="quick-action-text">Add Doctor</div>
           </Link>
           <Link to="/doctor-schedules" className="quick-action-card">
-            <div className="quick-action-icon">📋</div>
+            <div className="quick-action-icon"><SvgIcon name="calendar" size={20} /></div>
             <div className="quick-action-text">Manage Schedules</div>
           </Link>
         </div>

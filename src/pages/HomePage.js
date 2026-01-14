@@ -182,10 +182,10 @@ const HomePage = () => {
                   <span>Contact Us</span>
                   <span className="btn-arrow">→</span>
                 </Link>
-                {/* <Link to="/doctors-chat" className="btn btn-secondary btn-hero">
+                <Link to="/doctors-chat" className="btn btn-secondary btn-hero">
                   <span>Doctors Chat</span>
                   <span className="btn-arrow">→</span>
-                </Link> */}
+                </Link>
               </>
             )}
           </div>
@@ -339,7 +339,7 @@ const HomePage = () => {
             <p className="cta-description">
               Book your consultation with our expert orthopaedic specialists today.
             </p>
-            {/* {authenticated ? (
+            {authenticated ? (
               <Link to="/appointments" className="btn btn-primary btn-large">
                 <span>Book Appointment</span>
                 <span className="btn-arrow">→</span>
@@ -349,7 +349,7 @@ const HomePage = () => {
                 <span>Login to Book Appointment</span>
                 <span className="btn-arrow">→</span>
               </Link>
-            )} */}
+            )}
           </div>
         </div>
       </section>
